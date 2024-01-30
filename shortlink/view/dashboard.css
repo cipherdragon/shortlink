@@ -1,0 +1,79 @@
+#link-create-form {
+    display: grid;
+    grid-template-columns: max-content 300px;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+
+    border: 2px dashed #888;
+    width: fit-content;
+    padding: 10px;
+}
+
+#link-create-form > label {
+    justify-self: start;
+    align-self: center;
+}
+
+#link-create-form > input {
+    justify-self: start;
+    align-self: center;
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+#link-create-form > input[type="submit"] {
+    margin-top: 10px;
+    justify-self: end;
+    align-self: center;
+    width: 100%;
+
+    grid-column-start: 2;
+    grid-column-end: 2;
+
+    max-width: 150px;
+}
+
+td {
+    padding: 5px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.toggle-change-password {
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}
+
+#change-password-form {
+    display: grid;
+    grid-template-columns: max-content 200px;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+
+    border: 2px dashed #888;
+    width: fit-content;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#change-password-form .change-password-heading {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#change-password-form > label {
+    justify-self: start;
+    align-self: center;
+}
+
+#change-password-form > input[type="submit"] {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortLink dashboard</title>
+    <link rel="stylesheet" href="/shortlink/view/dashboard.css">
+
+    <script src="/shortlink/view/dashboard.js" type="module" defer></script>
+</head>
+<body>
+    Welcome <span id="username">User</span>! Manage your short-links here. <br><br>
+    <button id="logout-btn">Log out</button>
+
+    <br><br>
+    <div class="toggle-change-password" id="toggle-change-password">
+        Show/Hide change password form
+    </div>
+    <form id="change-password-form" style="display: none;">
+        <b class="change-password-heading">Change password</b>
+        <label for="destination">New password: </label>
+        <input type="text" name="password" placeholder="password" required>
+
+        <input type="submit" value="Change password!">
+    </form>
+
+    <form id="link-create-form">
+        <label for="slug">Custom backhalf: </label>
+        <input type="text" name="slug" placeholder="Backhalf" required>
+        <label for="destination">Destination: </label>
+        <input type="text" name="destination" placeholder="Destination" required>
+
+        <input type="submit" value="Create Short Link!">
+    </form>
+    <br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Slug</th>
+                <th>Destination</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="link-table-body">
+        </tbody>
+    </table>
+</body>
+</html>
