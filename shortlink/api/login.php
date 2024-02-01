@@ -13,7 +13,6 @@ require_once __DIR__ . '/../model/LoginManager.php';
 
 $login_manager = LoginManager::get_instance();
 $login_manager->session_login();
-$login_manager->logout();
 
 // Get JSON body
 $data = json_decode(file_get_contents('php://input'), true);
@@ -32,8 +31,13 @@ if (!isset($data['username']) || !isset($data['password'])) {
 $username = $data['username'];
 $password = $data['password'];
 
-// Login
-if (!$login_manager->login($username, $password)) {
+// Login, if not already logged in
+if ($login_manager->get_user() == NULL) {
+    $login_manager->login($username, $password);
+}
+
+// Send unauthorized if login failed
+if (is_null($login_manager->get_user())) {
     http_response_code(401);
     die();
 }
@@ -50,5 +54,4 @@ $user_properties = array(
 $json = json_encode($user_properties);
 
 header('Content-Type: application/json');
-http_response_code(200);
 echo $json;
