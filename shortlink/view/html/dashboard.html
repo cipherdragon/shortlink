@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShortLink dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/shortlink/view/css/dashboard.css">
 
     <script src="/shortlink/view/js/dashboard.js" type="module" defer></script>
@@ -33,16 +36,14 @@
         <input type="submit" value="Create Short Link!">
     </form>
     <br><br>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Slug</th>
-                <th>Destination</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody id="link-table-body">
-        </tbody>
-    </table>
+    <div class="redirection-list"></div>
+    <!-- <div class="redirection-card">
+        <div class="redirection-card__short-link">From: <a href="http://localhost:8080/yt"><span class="redirection-card__short-link__baseurl">http://localhost:8080/</span>yt</a></div>
+        <div class="redirection-card__destination">To: <a href="https://youtube.com">https://youtube.com</a></div>
+        <div class="redirection-card__controls">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+    </div> -->
 </body>
 </html>

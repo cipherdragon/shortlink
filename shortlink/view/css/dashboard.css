@@ -77,3 +77,72 @@ td {
     grid-column-start: 1;
     grid-column-end: 3;
 }
+
+.redirection-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.redirection-card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    max-width: 600px;
+    border-radius: 10px;
+
+    background-color: #ecf4f7;
+    box-shadow: 0px 0px 3px rgba(63, 63, 63, 0.5);
+}
+
+.redirection-card__destination, 
+.redirection-card__short-link {
+    display: grid;
+    grid-template-columns: 50px auto;
+    align-content: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.redirection-card__short-link {
+    margin-bottom: 3px;
+}
+
+.redirection-card__short-link a,
+.redirection-card__short-link a:visited {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0px;
+    color: blue
+}
+
+.redirection-card__short-link__baseurl {
+    color: rgb(120, 152, 255);
+    text-decoration: underline;
+}
+
+.redirection-card__destination {
+    margin-bottom: 15px;
+}
+
+.redirection-card__destination a, 
+.redirection-card__destination a:visited{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(0, 0, 196)
+}
+
+.redirection-card__controls button {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444444;
+    text-decoration: underline;
+}

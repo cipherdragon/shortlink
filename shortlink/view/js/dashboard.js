@@ -82,34 +82,68 @@ async function delete_redirection(slug) {
     get_my_redirects();
 }
 
+function create_redirection_item(baseurl, slug, destination) {
+    const redirection_card = document.createElement('div');
+    const redirection_card__short_link = document.createElement('div');
+    const redirection_card__short_link__a = document.createElement('a');
+    const redirection_card__short_link__baseurl = document.createElement('span');
+    const redirection_card__short_link__slug = document.createElement('span');
+    const redirection_card__destination = document.createElement('div');
+    const redirection_card__destination__a = document.createElement('a');
+
+    const redirection_card__controls = document.createElement('div');
+    const edit_btn = document.createElement('button');
+    const delete_btn = document.createElement('button');
+
+    redirection_card.classList.add('redirection-card');
+    redirection_card__short_link.classList.add('redirection-card__short-link');
+    redirection_card__short_link__baseurl.classList.add('redirection-card__short-link__baseurl');
+    redirection_card__destination.classList.add('redirection-card__destination');
+    redirection_card__controls.classList.add('redirection-card__controls');
+
+    redirection_card__short_link__baseurl.innerHTML = baseurl;
+    redirection_card__short_link__slug.innerHTML = slug;
+    redirection_card__short_link__a.appendChild(redirection_card__short_link__baseurl);
+    redirection_card__short_link__a.appendChild(redirection_card__short_link__slug);
+
+    redirection_card__destination__a.innerHTML = destination;
+
+    redirection_card__short_link.appendChild(document.createTextNode('From: '));
+    redirection_card__short_link.appendChild(redirection_card__short_link__a);
+    redirection_card__destination.appendChild(document.createTextNode('To: '));
+    redirection_card__destination.appendChild(redirection_card__destination__a);
+
+    redirection_card__short_link__a.href = `${baseurl}${slug}`;
+    redirection_card__destination__a.href = destination;
+
+    edit_btn.innerHTML = 'Edit';
+    delete_btn.innerHTML = 'Delete';
+    redirection_card__controls.appendChild(edit_btn);
+    redirection_card__controls.appendChild(delete_btn);
+
+    delete_btn.addEventListener('click', () => delete_redirection(slug));
+
+    redirection_card.appendChild(redirection_card__short_link);
+    redirection_card.appendChild(redirection_card__destination);
+    redirection_card.appendChild(redirection_card__controls);
+
+    return redirection_card;
+}
+
+function refresh_redirection_list(redirections) {
+    const redirection_list = document.getElementsByClassName('redirection-list')[0];
+    redirection_list.innerHTML = '';
+
+    redirections.forEach(redirection => {
+        redirection_list.appendChild(create_redirection_item("http://localhost:8080/", redirection.slug, redirection.destination));
+    });
+}
+
 async function get_my_redirects() {
     const response = await fetch('/shortlink/api/redirection.php');
     const data = await response.json();
 
-    const table_body = document.getElementById('link-table-body');
-    table_body.innerHTML = '';
-
-    data.forEach(redirection => {
-        const delete_btn = document.createElement('button');
-        delete_btn.classList.add('btn');
-        delete_btn.classList.add('btn-primary');
-        delete_btn.innerHTML = 'Delete';
-        delete_btn.addEventListener('click', () => delete_redirection(redirection.slug));
-
-        const delete_btn_td = document.createElement('td');
-        delete_btn_td.appendChild(delete_btn);
-
-        const tr = document.createElement('tr');
-        const content = 
-            `<td>${redirection.slug}</td>
-            <td>${redirection.destination}</td>`;
-        
-        tr.innerHTML = content;
-        tr.appendChild(delete_btn_td);
-
-        table_body.appendChild(tr);
-        console.log(redirection);
-    });
+    refresh_redirection_list(data);
 }
 
 function load_user() {
