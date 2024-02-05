@@ -2,7 +2,6 @@ document.getElementById('link-create-form').addEventListener('submit', on_create
 document.getElementById('change-password-form').addEventListener('submit', on_change_password);
 document.getElementById('logout-btn').addEventListener('click', logout);
 document.getElementById('toggle-change-password').addEventListener('click', toggle_change_password);
-document.getElementById('link-create-close').addEventListener('click', close_link_create_form);
 document.getElementById('shortlink-dialog-btn').addEventListener('click', show_link_create_form);
 
 
@@ -13,12 +12,16 @@ function show_link_create_form() {
     link_create_popup.classList.remove('hidden');
 }
 
-function close_link_create_form() {
-    const link_create_form = document.getElementById('link-create-form');
-    const link_create_popup = document.getElementById('link-create-popup');
-
-    link_create_form.reset();
-    link_create_popup.classList.add('hidden');
+function setup_popup_close_btn() {
+    const popups = document.querySelectorAll('.popup-overlay');
+    popups.forEach(popup => {
+        const cancel_btn = popup.querySelector('.btn-cancel');
+        const popup_form = popup.querySelector('form');
+        cancel_btn.addEventListener('click', () => {
+            popup_form.reset();
+            popup.classList.add('hidden');
+        });
+    });
 }
 
 function toggle_change_password() {
@@ -177,3 +180,4 @@ function load_user() {
 
 get_my_redirects();
 load_user();
+setup_popup_close_btn();
