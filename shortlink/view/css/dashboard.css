@@ -43,10 +43,43 @@ td {
 }
 
 .redirection-list {
+    position: relative;
+
+    border: 2px solid #b3c6db;
+    border-radius: 5px;
+    background-color: #dce3eb;
+    width: min(100%, 800px);
+
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.redirection-list h2 {
+    background-color: #b3c6db;
+    margin: 0;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #1d222b;
+    margin-bottom: 5px;
+
+    box-shadow: 0px 0px 3px rgba(63, 63, 63, 0.795);
+}
+
+.redirection-list-items {
     display: flex;
     flex-direction: column;
+    padding: 10px;
+}
 
-    gap: 5px;
+.redirection-list-items > :first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+.redirection-list-items > :last-child {
+    border-radius: 0 0 5px 5px;
 }
 
 .redirection-card {
@@ -54,11 +87,10 @@ td {
     flex-direction: column;
     gap: 5px;
     padding: 10px;
-    max-width: 600px;
-    border-radius: 10px;
+    max-width: 100%;
 
-    background-color: #ecf4f7;
-    box-shadow: 0px 0px 3px rgba(63, 63, 63, 0.5);
+    background-color: #ffffff;
+    box-shadow: 0px 0px 3px rgba(63, 63, 63, 0.603);
 }
 
 .redirection-card__destination, 

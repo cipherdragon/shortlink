@@ -149,7 +149,7 @@ function create_redirection_item(baseurl, slug, destination) {
 }
 
 function refresh_redirection_list(redirections) {
-    const redirection_list = document.getElementsByClassName('redirection-list')[0];
+    const redirection_list = document.getElementsByClassName('redirection-list-items')[0];
     redirection_list.innerHTML = '';
 
     redirections.forEach(redirection => {
