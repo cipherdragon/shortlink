@@ -2,8 +2,67 @@ td {
     padding: 5px;
 }
 
+body {
+    padding: 10px;
+    background-color: #ecf1f7;
+}
+
+.content {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .hidden {
     display: none !important;
+}
+
+.welcome-msg {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3c4557;
+    margin-bottom: 10px;
+}
+
+.user-actions {
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.user-actions h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3c4557;
+    padding: 0;
+
+    margin-bottom: 10px;
+}
+
+.user-actions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-actions li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 5px;
+}
+
+.user-actions li::before {
+    content: '=>';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 20px;
+    color: #566480;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
 }
 
 .toggle-change-password {
@@ -214,7 +273,7 @@ td {
     background-color: transparent;
     color: rgb(0, 61, 192);
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     text-decoration: underline;

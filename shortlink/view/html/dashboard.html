@@ -12,13 +12,21 @@
     <script src="/shortlink/view/js/dashboard.js" type="module" defer></script>
 </head>
 <body>
-    Welcome <span id="username">User</span>! Manage your short-links here. <br><br>
-    <button id="logout-btn">Log out</button>
+    <div class="content">
 
-    <br><br>
-    <div class="ui-action-btn" id="change-password-btn">Change password</div>
-    <div class="ui-action-btn" id="shortlink-dialog-btn">Create a redirection</div>
-    <br>
+    <div class="welcome-msg">
+        Welcome to Shortlink dashboard, <span id="username">User</span>! <br> 
+        You can manage your short-links (redirections) here. <br>
+    </div>
+
+    <div class="user-actions">
+        <h2>User actions</h2>
+        <ul>
+            <li><div class="ui-action-btn" id="logout-btn">Log out</div></li>
+            <li><div class="ui-action-btn" id="change-password-btn">Change password</div></li>
+            <li><div class="ui-action-btn" id="shortlink-dialog-btn">Create a redirection</div></li>
+        </ul>
+    </div>
     <div class="redirection-list">
         <h2>Your redirections</h2>
         <div class="redirection-list-items"></div>
@@ -57,5 +65,7 @@
             </form>
         </div>
     </div>
+
+</div>
 </body>
 </html>
