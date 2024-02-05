@@ -16,7 +16,7 @@
     <button id="logout-btn">Log out</button>
 
     <br><br>
-    <div class="toggle-change-password" id="toggle-change-password">
+    <div class="ui-action-btn" id="toggle-change-password">
         Show/Hide change password form
     </div>
     <form id="change-password-form" style="display: none;">
@@ -26,7 +26,7 @@
 
         <input type="submit" value="Change password!">
     </form>
-    <div class="shortlink-dialog-btn" id="shortlink-dialog-btn">
+    <div class="ui-action-btn" id="shortlink-dialog-btn">
         Create a redirection
     </div>
     <br>
@@ -43,9 +43,9 @@
         </div>
     </div> -->
     <div class="popup-overlay hidden" id="link-create-popup">
-        <div class="link-creation-dialog">
+        <div class="popup-dialog">
             <h2>Create a redirection</h2>
-            <form id="link-create-form">
+            <form id="link-create-form" class="popup-form">
                 <input type="text" name="slug" placeholder="Backhalf" required>
                 <input type="text" name="destination" placeholder="Destination" required>
 
