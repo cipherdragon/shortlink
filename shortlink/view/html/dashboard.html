@@ -16,19 +16,8 @@
     <button id="logout-btn">Log out</button>
 
     <br><br>
-    <div class="ui-action-btn" id="toggle-change-password">
-        Show/Hide change password form
-    </div>
-    <form id="change-password-form" style="display: none;">
-        <b class="change-password-heading">Change password</b>
-        <label for="destination">New password: </label>
-        <input type="text" name="password" placeholder="password" required>
-
-        <input type="submit" value="Change password!">
-    </form>
-    <div class="ui-action-btn" id="shortlink-dialog-btn">
-        Create a redirection
-    </div>
+    <div class="ui-action-btn" id="change-password-btn">Change password</div>
+    <div class="ui-action-btn" id="shortlink-dialog-btn">Create a redirection</div>
     <br>
     <div class="redirection-list">
         <h2>Your redirections</h2>
@@ -52,6 +41,18 @@
                 <div class="form-controls">
                     <input type="button" value="Cancel" class="btn-cancel">
                     <input type="submit" value="Create" class="btn-submit">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popup-overlay hidden" id="change-password-popup">
+        <div class="popup-dialog">
+            <h2>Change password</h2>
+            <form id="change-password-form" class="popup-form">
+                <input type="text" name="password" placeholder="New password" required>
+                <div class="form-controls">
+                    <input type="button" value="Cancel" class="btn-cancel">
+                    <input type="submit" value="Change Password" class="btn-submit">
                 </div>
             </form>
         </div>

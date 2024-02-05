@@ -13,35 +13,6 @@ td {
     color: blue;
 }
 
-#change-password-form {
-    display: grid;
-    grid-template-columns: max-content 200px;
-    grid-template-rows: auto auto auto;
-    gap: 10px;
-
-    border: 2px dashed #888;
-    width: fit-content;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-#change-password-form .change-password-heading {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#change-password-form > label {
-    justify-self: start;
-    align-self: center;
-}
-
-#change-password-form > input[type="submit"] {
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-
 .redirection-list {
     position: relative;
 

@@ -1,11 +1,16 @@
 document.getElementById('link-create-form').addEventListener('submit', on_create);
 document.getElementById('change-password-form').addEventListener('submit', on_change_password);
 document.getElementById('logout-btn').addEventListener('click', logout);
-document.getElementById('toggle-change-password').addEventListener('click', toggle_change_password);
+document.getElementById('change-password-btn').addEventListener('click', show_change_password_form);
 document.getElementById('shortlink-dialog-btn').addEventListener('click', show_link_create_form);
 
 
 let user = null;
+
+function show_change_password_form() {
+    const change_password_popup = document.getElementById('change-password-popup');
+    change_password_popup.classList.remove('hidden');
+}
 
 function show_link_create_form() {
     const link_create_popup = document.getElementById('link-create-popup');
@@ -22,16 +27,6 @@ function setup_popup_close_btn() {
             popup.classList.add('hidden');
         });
     });
-}
-
-function toggle_change_password() {
-    const change_password_form = document.getElementById('change-password-form');
-
-    if (change_password_form.style.display === 'none') {
-        change_password_form.style.display = 'grid';
-    } else {
-        change_password_form.style.display = 'none';
-    }
 }
 
 async function on_change_password(event) {
@@ -60,7 +55,7 @@ async function on_change_password(event) {
     })
 
     form.reset();
-    toggle_change_password();
+    document.getElementById('change-password-popup').classList.add('hidden');
 }
 
 async function logout() {
