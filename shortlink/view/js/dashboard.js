@@ -1,31 +1,28 @@
 document.getElementById('link-create-form').addEventListener('submit', on_create);
 document.getElementById('change-password-form').addEventListener('submit', on_change_password);
 document.getElementById('logout-btn').addEventListener('click', logout);
-document.getElementById('change-password-btn').addEventListener('click', show_change_password_form);
-document.getElementById('shortlink-dialog-btn').addEventListener('click', show_link_create_form);
+
+document.getElementById('change-password-btn').addEventListener('click', () => toggle_popup('change-password-popup', 'show'));
+document.getElementById('shortlink-dialog-btn').addEventListener('click', () => toggle_popup('link-create-popup', 'show'));
 
 
 let user = null;
 
-function show_change_password_form() {
-    const change_password_popup = document.getElementById('change-password-popup');
-    change_password_popup.classList.remove('hidden');
-}
+function toggle_popup(popup_id, visibility) {
+    const dialog = document.getElementById(popup_id);
 
-function show_link_create_form() {
-    const link_create_popup = document.getElementById('link-create-popup');
-    link_create_popup.classList.remove('hidden');
+    if (visibility === 'show') dialog.classList.remove('hidden');
+    else dialog.classList.add('hidden');
+
+    const form = dialog.querySelector('form'); 
+    form && form.reset();
 }
 
 function setup_popup_close_btn() {
     const popups = document.querySelectorAll('.popup-overlay');
     popups.forEach(popup => {
         const cancel_btn = popup.querySelector('.btn-cancel');
-        const popup_form = popup.querySelector('form');
-        cancel_btn.addEventListener('click', () => {
-            popup_form.reset();
-            popup.classList.add('hidden');
-        });
+        cancel_btn && cancel_btn.addEventListener('click', () => toggle_popup(popup.id, 'hide'));
     });
 }
 
@@ -55,7 +52,7 @@ async function on_change_password(event) {
     })
 
     form.reset();
-    document.getElementById('change-password-popup').classList.add('hidden');
+    toggle_popup('change-password-popup', 'hide');
 }
 
 async function logout() {
@@ -81,8 +78,7 @@ async function on_create(event) {
 
     form.reset();
     get_my_redirects();
-
-    close_link_create_form();
+    toggle_popup('link-create-popup', 'hide');
 }
 
 async function delete_redirection(slug) {
