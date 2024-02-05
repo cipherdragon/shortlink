@@ -6,7 +6,7 @@
     <title>ShortLink dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/shortlink/view/css/dashboard.css">
 
     <script src="/shortlink/view/js/dashboard.js" type="module" defer></script>
@@ -26,15 +26,9 @@
 
         <input type="submit" value="Change password!">
     </form>
-
-    <form id="link-create-form">
-        <label for="slug">Custom backhalf: </label>
-        <input type="text" name="slug" placeholder="Backhalf" required>
-        <label for="destination">Destination: </label>
-        <input type="text" name="destination" placeholder="Destination" required>
-
-        <input type="submit" value="Create Short Link!">
-    </form>
+    <div class="shortlink-dialog-btn" id="shortlink-dialog-btn">
+        Create a redirection
+    </div>
     <br><br>
     <div class="redirection-list"></div>
     <!-- <div class="redirection-card">
@@ -45,5 +39,19 @@
             <button>Delete</button>
         </div>
     </div> -->
+    <div class="popup-overlay hidden" id="link-create-popup">
+        <div class="link-creation-dialog">
+            <h2>Create a redirection</h2>
+            <form id="link-create-form">
+                <input type="text" name="slug" placeholder="Backhalf" required>
+                <input type="text" name="destination" placeholder="Destination" required>
+
+                <div class="form-controls">
+                    <input type="button" value="Cancel" class="btn-cancel" id="link-create-close">
+                    <input type="submit" value="Create" class="btn-submit">
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

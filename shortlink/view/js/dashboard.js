@@ -2,8 +2,24 @@ document.getElementById('link-create-form').addEventListener('submit', on_create
 document.getElementById('change-password-form').addEventListener('submit', on_change_password);
 document.getElementById('logout-btn').addEventListener('click', logout);
 document.getElementById('toggle-change-password').addEventListener('click', toggle_change_password);
+document.getElementById('link-create-close').addEventListener('click', close_link_create_form);
+document.getElementById('shortlink-dialog-btn').addEventListener('click', show_link_create_form);
+
 
 let user = null;
+
+function show_link_create_form() {
+    const link_create_popup = document.getElementById('link-create-popup');
+    link_create_popup.classList.remove('hidden');
+}
+
+function close_link_create_form() {
+    const link_create_form = document.getElementById('link-create-form');
+    const link_create_popup = document.getElementById('link-create-popup');
+
+    link_create_form.reset();
+    link_create_popup.classList.add('hidden');
+}
 
 function toggle_change_password() {
     const change_password_form = document.getElementById('change-password-form');
@@ -67,6 +83,8 @@ async function on_create(event) {
 
     form.reset();
     get_my_redirects();
+
+    close_link_create_form();
 }
 
 async function delete_redirection(slug) {

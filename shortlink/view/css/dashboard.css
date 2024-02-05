@@ -1,44 +1,8 @@
-#link-create-form {
-    display: grid;
-    grid-template-columns: max-content 300px;
-    grid-template-rows: auto auto auto;
-    gap: 10px;
-
-    border: 2px dashed #888;
-    width: fit-content;
-    padding: 10px;
-}
-
-#link-create-form > label {
-    justify-self: start;
-    align-self: center;
-}
-
-#link-create-form > input {
-    justify-self: start;
-    align-self: center;
-    width: 100%;
-
-    box-sizing: border-box;
-}
-
-#link-create-form > input[type="submit"] {
-    margin-top: 10px;
-    justify-self: end;
-    align-self: center;
-    width: 100%;
-
-    grid-column-start: 2;
-    grid-column-end: 2;
-
-    max-width: 150px;
-}
-
 td {
     padding: 5px;
 }
 
-.hide {
+.hidden {
     display: none !important;
 }
 
@@ -144,5 +108,113 @@ td {
     font-size: 14px;
     font-weight: bold;
     color: #444444;
+    text-decoration: underline;
+}
+
+.popup-overlay {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(193, 209, 230, 0.8);    
+    backdrop-filter: blur(3px);
+    padding: 10px;
+    box-sizing: border-box;
+
+    display: grid;
+    place-content: center;
+}
+
+.link-creation-dialog {
+    background-color: rgb(241, 249, 253);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 3px rgba(63, 63, 63, 0.5);
+    box-sizing: border-box;
+}
+
+.link-creation-dialog h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #51565c;
+}
+
+#link-create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 300px;
+}
+
+#link-create-form > input[type="text"] {
+    justify-self: start;
+    align-self: center;
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background-color: transparent;
+    border: 2px solid #8b8b8b42;
+    border-radius: 3px;
+    padding: 3px;
+
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#link-create-form > input[type="text"]::placeholder{
+    font-weight: bold;
+    color: #8e9092;
+}
+
+.form-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #8b8b8b3a;
+}
+
+.form-controls input[type="submit"],
+.form-controls input[type="button"] {
+    align-self: flex-end;
+    width: 100%;
+
+    max-width: fit-content;
+    background-color: transparent;
+    border: none;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-radius: 100px;
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.form-controls .btn-submit {
+    color: rgb(24, 88, 206);
+}
+
+.form-controls .btn-cancel {
+    color: rgb(185, 58, 58);
+}
+
+.shortlink-dialog-btn {
+    background-color: transparent;
+    color: rgb(0, 61, 192);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
     text-decoration: underline;
 }
