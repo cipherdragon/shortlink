@@ -3,6 +3,10 @@ body {
     background-color: #ecf1f7;
 }
 
+[data-ui-template] {
+    display: none !important;
+}
+
 .content {
     max-width: 800px;
     width: 100%;

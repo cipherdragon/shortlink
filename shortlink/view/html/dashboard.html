@@ -23,22 +23,22 @@
         <h2>User actions</h2>
         <ul>
             <li><div class="ui-action-btn" id="logout-btn">Log out</div></li>
-            <li><div class="ui-action-btn" id="change-password-btn">Change password</div></li>
-            <li><div class="ui-action-btn" id="shortlink-dialog-btn">Create a redirection</div></li>
+            <li><div class="ui-action-btn" data-toggle-dialog="change-password-popup">Change password</div></li>
+            <li><div class="ui-action-btn" data-toggle-dialog="link-create-popup">Create a redirection</div></li>
         </ul>
     </div>
     <div class="redirection-list">
         <h2>Your redirections</h2>
         <div class="redirection-list-items"></div>
     </div>
-    <!-- <div class="redirection-card">
-        <div class="redirection-card__short-link">From: <a href="http://localhost:8080/yt"><span class="redirection-card__short-link__baseurl">http://localhost:8080/</span>yt</a></div>
-        <div class="redirection-card__destination">To: <a href="https://youtube.com">https://youtube.com</a></div>
+    <div class="redirection-card" data-ui-template>
+        <div class="redirection-card__short-link">From: <a href="http://localhost:8080/yt"><span class="redirection-card__short-link__baseurl">http://localhost:8080/</span><span class="redirection-card__short-link__slug"></span></a></div>
+        <div class="redirection-card__destination">To: <a href="https://youtube.com"><span class="redirection-card__destination__url">https://youtube.com</span></a></div>
         <div class="redirection-card__controls">
-            <button>Edit</button>
-            <button>Delete</button>
+            <button class="redirection-card__controls__edit-btn">Edit</button>
+            <button class="redirection-card__controls__delete-btn">Delete</button>
         </div>
-    </div> -->
+    </div>
     <div class="popup-overlay hidden" id="link-create-popup">
         <div class="popup-dialog">
             <h2>Create a redirection</h2>
