@@ -207,6 +207,17 @@ body {
     width: 300px;
 }
 
+.popup-form label {
+    font-weight: bold;
+    color: #44464b;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
 .popup-form input[type="text"] {
     width: 100%;
 
