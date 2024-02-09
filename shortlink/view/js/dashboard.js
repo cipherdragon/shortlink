@@ -124,15 +124,16 @@ async function get_my_redirects() {
     refresh_redirection_list(data);
 }
 
-function load_user() {
-    fetch('/shortlink/api/account.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.username === null) return;
+async function load_user() {
+    const [data, err] = await awaitable(fetch('/shortlink/api/account.php'));
 
-            user = data;
-            $('#username').text(user.username);
-        });
+    if (err || data.status !== 200) {
+        console.error(err);
+        return;
+    }
+
+    const user = await data.json();
+    $('#username').text(user.username);
 }
 
 get_my_redirects();
