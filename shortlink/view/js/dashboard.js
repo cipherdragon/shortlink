@@ -1,33 +1,28 @@
-document.getElementById('link-create-form').addEventListener('submit', on_create);
-document.getElementById('change-password-form').addEventListener('submit', on_change_password);
-document.getElementById('logout-btn').addEventListener('click', logout);
+$('#link-create-form').submit(on_create);
+$('#change-password-form').submit(on_change_password);
+$('#logout-btn').click(logout);
 
 let user = null;
 
 function toggle_popup(popup_id, visibility) {
     const dialog = document.getElementById(popup_id);
 
-    if (visibility === 'show') dialog.classList.remove('hidden');
-    else dialog.classList.add('hidden');
+    if (visibility === 'show') $(dialog).removeClass('hidden');
+    else $(dialog).addClass('hidden');
 
-    const form = dialog.querySelector('form'); 
-    form && form.reset();
+    dialog.querySelector('form')?.reset();
 }
 
 function setup_popup_open_btn() {
-    const action_btns = document.querySelectorAll('[data-toggle-dialog].ui-action-btn');
-    action_btns.forEach(popup_launch_btn => {
-        const popup_id = popup_launch_btn.dataset.toggleDialog;
-        popup_launch_btn.addEventListener('click', () => toggle_popup(popup_id, 'show'));
+    $('[data-toggle-dialog].ui-action-btn').each((_, el) => {
+        $(el).click(() => toggle_popup($(el).data('toggleDialog'), 'show'));
     });
 }
 
 function setup_popup_close_btn() {
-    const popups = document.querySelectorAll('.popup-overlay');
-    popups.forEach(popup => {
-        const cancel_btn = popup.querySelector('.btn-cancel');
-        cancel_btn && cancel_btn.addEventListener('click', () => toggle_popup(popup.id, 'hide'));
-    });
+    $('.popup-overlay').each((_, el) => {
+        $('.btn-cancel', el).click(() => toggle_popup($(el)[0].id, 'hide'));
+    })
 }
 
 async function on_change_password(event) {
@@ -99,29 +94,23 @@ async function delete_redirection(slug) {
 }
 
 function create_redirection_item(baseurl, slug, destination) {
-    const redirection_card_template = document.querySelector('[data-ui-template].redirection-card');
-    const redirection_card = redirection_card_template.cloneNode(true);
-    redirection_card.removeAttribute('data-ui-template');
+    const card = $('[data-ui-template].redirection-card').clone().removeAttr('data-ui-template');
 
-    const redirection_card__short_link__baseurl = redirection_card.querySelector('.redirection-card__short-link__baseurl');
-    const redirection_card__short_link__slug = redirection_card.querySelector('.redirection-card__short-link__slug');
-    const redirection_card__destination__url = redirection_card.querySelector('.redirection-card__destination__url');
+    card.find('.redirection-card__short-link__baseurl').text(baseurl);
+    card.find('.redirection-card__short-link__slug').text(slug);
+    card.find('.redirection-card__destination__url').text(destination);
 
-    const edit_btn = redirection_card.querySelector('.redirection-card__controls__edit-btn');
-    const delete_btn = redirection_card.querySelector('.redirection-card__controls__delete-btn');
+    const edit_btn = card.find('.redirection-card__controls__edit-btn');
+    const delete_btn = card.find('.redirection-card__controls__delete-btn');
 
-    redirection_card__short_link__baseurl.innerHTML = baseurl;
-    redirection_card__short_link__slug.innerHTML = slug;
-    redirection_card__destination__url.innerHTML = destination;
+    delete_btn.click(() => delete_redirection(slug));
 
-    delete_btn.addEventListener('click', () => delete_redirection(slug));
 
-    return redirection_card;
+    return card[0];
 }
 
 function refresh_redirection_list(redirections) {
-    const redirection_list = document.getElementsByClassName('redirection-list-items')[0];
-    redirection_list.innerHTML = '';
+    const redirection_list = $('.redirection-list-items').empty()[0];
 
     redirections.forEach(redirection => {
         redirection_list.appendChild(create_redirection_item("http://localhost:8080/", redirection.slug, redirection.destination));
@@ -142,7 +131,7 @@ function load_user() {
             if (data.username === null) return;
 
             user = data;
-            document.getElementById('username').innerHTML = user.username;
+            $('#username').text(user.username);
         });
 }
 
