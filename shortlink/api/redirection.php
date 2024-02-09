@@ -98,7 +98,36 @@ function handle_delete() {
 
 // Put request should be responded with a redirection updated
 function handle_put() {
+    global $user;
 
+    try {
+        $data = json_decode(file_get_contents('php://input'), true);
+        if (is_null($data)) throw new Exception("Invalid data");
+
+        $slug = $data['slug'];
+        $destination = $data['destination'];
+        if (is_null($slug) || is_null($destination)) throw new Exception("Invalid data");
+    } catch (Exception $e) {
+        http_response_code(400);
+        echo json_encode(array("error" => $e->getMessage()));
+        die();
+    }
+
+    if (!Redirection::is_valid_slug($slug)) {
+        http_response_code(400);
+        echo json_encode(array("error" => "Invalid slug"));
+        die();
+    }
+
+    $redirection = new Redirection($slug, $destination);
+    $result = RedirectionDAO::get_instance()->update_redirection($redirection);
+
+    if (!$result) {
+        http_response_code(500);
+        die();
+    }
+
+    http_response_code(201);
 }
 
 $request_method = $_SERVER['REQUEST_METHOD'];

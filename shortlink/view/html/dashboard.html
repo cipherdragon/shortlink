@@ -55,6 +55,26 @@
             </form>
         </div>
     </div>
+    <div class="popup-overlay hidden" id="link-update-popup">
+        <div class="popup-dialog">
+            <h2>Update a redirection</h2>
+            <form id="link-update-form" class="popup-form">
+                <label>
+                    <span>Slug: </span>
+                    <input type="text" name="slug" placeholder="Backhalf" required disabled>
+                </label>
+                <label>
+                    <span>Destination: </span>
+                    <input type="text" name="destination" placeholder="Destination" required>
+                </label>
+
+                <div class="form-controls">
+                    <input type="button" value="Cancel" class="btn-cancel">
+                    <input type="submit" value="Update" class="btn-submit">
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="popup-overlay hidden" id="change-password-popup">
         <div class="popup-dialog">
             <h2>Change password</h2>

@@ -1,5 +1,6 @@
 $('#link-create-form').submit(on_create);
 $('#change-password-form').submit(on_change_password);
+$('#link-update-form').submit(on_link_update);
 $('#logout-btn').click(logout);
 
 let user = null;
@@ -23,6 +24,26 @@ function setup_popup_close_btn() {
     $('.popup-overlay').each((_, el) => {
         $('.btn-cancel', el).click(() => toggle_popup($(el)[0].id, 'hide'));
     })
+}
+
+async function on_link_update(event) {
+    event.preventDefault();
+    const form = event.target;
+    const slug = form.slug.value;
+    const destination = form.destination.value;
+
+    const request_body = {
+        slug: slug,
+        destination: destination,
+    };
+
+    await fetch(`/shortlink/api/redirection.php`, {
+        method: 'PUT',
+        body: JSON.stringify(request_body),
+    });
+
+    get_my_redirects();
+    toggle_popup('link-update-popup', 'hide');
 }
 
 async function on_change_password(event) {
@@ -104,7 +125,12 @@ function create_redirection_item(baseurl, slug, destination) {
     const delete_btn = card.find('.redirection-card__controls__delete-btn');
 
     delete_btn.click(() => delete_redirection(slug));
+    edit_btn.click(() => {
+        toggle_popup('link-update-popup', 'show');
 
+        $('#link-update-form [name=slug]').val(slug);
+        $('#link-update-form [name=destination]').val(destination);
+    });
 
     return card[0];
 }

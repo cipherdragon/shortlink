@@ -237,6 +237,10 @@ body {
     color: #8e9092;
 }
 
+.popup-form input[type="text"]:disabled {
+    color: gray;
+}
+
 .form-controls {
     display: flex;
     flex-direction: row;

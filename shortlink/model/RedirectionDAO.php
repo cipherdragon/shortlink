@@ -70,6 +70,26 @@ class RedirectionDAO {
         }
     }
 
+    public function update_redirection(Redirection $new_redirection) {
+        $slug = $new_redirection->get_slug();
+        $destination = $new_redirection->get_destination();
+
+        $pdo = $this->db->get_pdo();
+        if (is_null($pdo)) return false;
+
+        try {
+            $query = "UPDATE redirects SET destination = ? WHERE slug = ?";
+
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$destination, $slug]);
+
+            return true;
+        } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function delete_redirection($slug) {
         $pdo = $this->db->get_pdo();
         if (is_null($pdo)) return false;
