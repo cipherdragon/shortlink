@@ -15,6 +15,7 @@ function run_redirection($slug) {
 	if (is_null($dest)) return;
 
 	header("Location: " . $dest, 301);
+	die();
 }
 
 function route() {
