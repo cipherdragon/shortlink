@@ -117,6 +117,9 @@ async function delete_redirection(slug) {
 function create_redirection_item(baseurl, slug, destination) {
     const card = $('[data-ui-template].redirection-card').clone().removeAttr('data-ui-template');
 
+    card.find('.redirection-card__short-link a').attr('href', `${baseurl}${slug}`);
+    card.find('.redirection-card__destination a').attr('href', `${destination}`);
+
     card.find('.redirection-card__short-link__baseurl').text(baseurl);
     card.find('.redirection-card__short-link__slug').text(slug);
     card.find('.redirection-card__destination__url').text(destination);
@@ -139,7 +142,7 @@ function refresh_redirection_list(redirections) {
     const redirection_list = $('.redirection-list-items').empty()[0];
 
     redirections.forEach(redirection => {
-        redirection_list.appendChild(create_redirection_item("http://localhost:8080/", redirection.slug, redirection.destination));
+        redirection_list.appendChild(create_redirection_item(redirection.baseurl, redirection.slug, redirection.destination));
     });
 }
 

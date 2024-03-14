@@ -7,6 +7,7 @@ use Exception;
 require_once __DIR__ . '/../model/LoginManager.php';
 require_once __DIR__ . '/../model/Redirection.php';
 require_once __DIR__ . '/../model/RedirectionDAO.php';
+require_once __DIR__ . '/../Config.php';
 
 $login_manager = LoginManager::get_instance();
 $login_manager->session_login();
@@ -27,6 +28,7 @@ function handle_get() {
 
     foreach ($redirects as $redirect) {
         $redirect_properties[] = array(
+            "baseurl" => Config::BASE_URL,
             "slug" => $redirect->get_slug(),
             "destination" => $redirect->get_destination()
         );

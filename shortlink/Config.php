@@ -8,6 +8,9 @@ class Config {
     const DB_USER = 'redirector';
     const DB_PASSWORD = 'redirector_password_123';
 
+    // Base URL, so that the redirection linke is BASE_URL + slug
+    const BASE_URL = 'https://example.com/';
+
     const MAX_SLUG_LENGTH = 50;
     const ALLOWED_SLUG_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_~";
 
