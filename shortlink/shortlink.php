@@ -32,6 +32,9 @@ function route() {
 		case '/rd/login':
     		require_once __DIR__ . '/view/login.php';
 			die();
+		case '/rd/install':
+			require_once __DIR__ . '/installer.php';
+			die();
 		default:
 			// Not die()ing here. If redirection does not exist, control needs to
 			// be passed to the other application
