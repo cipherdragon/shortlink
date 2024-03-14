@@ -36,7 +36,7 @@ function create_tables() {
     )");
 
     $pdo->exec("CREATE TABLE redirects (
-        slug VARCHAR(300) NOT NULL,
+        slug VARCHAR(300) NOT NULL PRIMARY KEY,
         destination VARCHAR(3000) NOT NULL,
         uid INT NOT NULL,
         FOREIGN KEY (uid) REFERENCES users(uid)
