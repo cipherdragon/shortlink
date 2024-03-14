@@ -34,12 +34,12 @@ for the sake of completeness.
 1. Get the latest release from the releases page.
 2. Extract the archive to your webserver's document root.
 3. Rename the extracted folder to `shortlink`.
-4. Create a mysql database. Shortlink expects your mysql server to use default 3306 port.
+4. Create a mysql database. Shortlink expects your mysql server to use the default 3306 port.
 5. Edit the config options in `shortlink/Config.php` to your liking. Set DB credentials.
 
 At this point, all shortlink related files should be in a sub directory called
-`shortlink` in your webserver's document root. Next step is to route any request which
-does not exist to a single PHP file. Let's call it `index.php` file for now.
+`shortlink` in your webserver's document root. Next step is to route all requests to 
+non-existing resources to a single PHP file. Let's call it `index.php` file for now.
 The way to reroute requests to a single PHP file depends on the server software
 you are using. For Apache, this can be done by adding a rewrite rule to
 `.htaccess` file. Please check the server software's documentation for this.
