@@ -2,7 +2,7 @@
 
 namespace shortlink;
 
-use PDO;
+use PDOException;
 
 require_once("Database.php");
 require_once("Redirection.php");

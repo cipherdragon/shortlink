@@ -2,6 +2,8 @@
 
 namespace shortlink;
 
+use Exception;
+
 require_once __DIR__ . '/../model/LoginManager.php';
 require_once __DIR__ . '/../model/Redirection.php';
 require_once __DIR__ . '/../model/RedirectionDAO.php';
