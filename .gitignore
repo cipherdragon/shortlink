@@ -1,2 +1,6 @@
 requirements.txt
 shortlink.zip
+node_modules
+shortlink/view/dist
+.parcel-cache
+release

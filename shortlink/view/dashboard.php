@@ -15,5 +15,5 @@ if (is_null($user)) {
     die();
 }
 
-require_once __DIR__ . '/html/dashboard.html';
+require_once __DIR__ . '/dist/dashboard.html';
 die();

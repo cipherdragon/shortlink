@@ -15,4 +15,4 @@ if (!is_null($user)) {
     die();
 }
 
-require_once __DIR__ . '/html/login.html';
+require_once __DIR__ . '/dist/login.html';
