@@ -3,10 +3,10 @@ import $ from 'jquery';
 
 window.$ = $; // https://stackoverflow.com/a/63678146
 
-$('#link-create-form').submit(on_create);
-$('#change-password-form').submit(on_change_password);
-$('#link-update-form').submit(on_link_update);
-$('#logout-btn').click(logout);
+$('#link-create-form').on('submit', on_create);
+$('#change-password-form').on('submit', on_change_password);
+$('#link-update-form').on('submit', on_link_update);
+$('#logout-btn').on('click', logout);
 
 let user = null;
 
@@ -21,13 +21,13 @@ function toggle_popup(popup_id, visibility) {
 
 function setup_popup_open_btn() {
     $('[data-toggle-dialog].ui-action-btn').each((_, el) => {
-        $(el).click(() => toggle_popup($(el).data('toggleDialog'), 'show'));
+        $(el).on('click', () => toggle_popup($(el).data('toggleDialog'), 'show'));
     });
 }
 
 function setup_popup_close_btn() {
     $('.popup-overlay').each((_, el) => {
-        $('.btn-cancel', el).click(() => toggle_popup($(el)[0].id, 'hide'));
+        $('.btn-cancel', el).on('click', () => toggle_popup($(el)[0].id, 'hide'));
     })
 }
 
