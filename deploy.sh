@@ -12,7 +12,7 @@ rm -rf ./dist/shortlink/view/css;
 rm -rf ./dist/shortlink/view/html;
 rm -rf ./dist/shortlink/view/js;
 
-release_dir=./release/$(date -I)
+release_dir=./release/;
 mkdir -p $release_dir;
 rm -rf $release_dir;
 mkdir -p $release_dir;
