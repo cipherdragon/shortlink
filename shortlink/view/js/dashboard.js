@@ -1,3 +1,8 @@
+import { awaitable } from './magicsync.ts';
+import $ from 'jquery';
+
+window.$ = $; // https://stackoverflow.com/a/63678146
+
 $('#link-create-form').submit(on_create);
 $('#change-password-form').submit(on_change_password);
 $('#link-update-form').submit(on_link_update);
