@@ -1,4 +1,4 @@
-document.getElementById('login-form').addEventListener('submit', on_login);
+document.getElementById('login-form')!.addEventListener('submit', on_login);
 
 async function on_login(event) {
     event.preventDefault();

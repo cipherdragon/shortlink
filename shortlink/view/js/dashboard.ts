@@ -1,6 +1,7 @@
 import { awaitable } from './magicsync.ts';
 import $ from 'jquery';
 
+// @ts-ignore
 window.$ = $; // https://stackoverflow.com/a/63678146
 
 $('#link-create-form').on('submit', on_create);
@@ -8,10 +9,11 @@ $('#change-password-form').on('submit', on_change_password);
 $('#link-update-form').on('submit', on_link_update);
 $('#logout-btn').on('click', logout);
 
-let user = null;
+type User = { username: string, password: string };
+let user : User | null = null;
 
 function toggle_popup(popup_id, visibility) {
-    const dialog = document.getElementById(popup_id);
+    const dialog = document.getElementById(popup_id)!;
 
     if (visibility === 'show') $(dialog).removeClass('hidden');
     else $(dialog).addClass('hidden');
@@ -58,6 +60,7 @@ async function on_change_password(event) {
 
     if (user === null) {
         alert("Can't change password due to an error!");
+        return;
     }
 
     const request_body = {
